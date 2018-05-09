@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Probando</string>
+    <string name="database">user</string>
+    <string name="empty_not_saved">No guardado</string>
+</resources>
