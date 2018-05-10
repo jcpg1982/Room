@@ -43,7 +43,7 @@ public class RetrofitClase extends AppCompatActivity {
                 }else {
                     Catalogo catalogo = response.body();
                     for (Course c : catalogo.courses){
-                        Log.i(TAG, String.format("%s: %s", c.title, c.subtitle));
+                        Log.i(TAG, String.format("titulo:\n%s\nsubtitulos:\n%s", c.title, c.subtitle));
                         for (Instructor i : c.instructors){
                             Log.i(TAG, i.name);
                         }
