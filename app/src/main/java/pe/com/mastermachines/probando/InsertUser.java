@@ -12,11 +12,12 @@ import android.widget.Button;
 import pe.com.mastermachines.probando.data.entity.UserEntity;
 import pe.com.mastermachines.probando.data.repository.UserRepository;
 import pe.com.mastermachines.probando.data.view.UserView;
+import pe.com.mastermachines.probando.retrofit.RetrofitClase;
 
 public class InsertUser extends AppCompatActivity implements View.OnClickListener{
 
     TextInputEditText name,fullname;
-    Button save,view;
+    Button save,view,retrofit;
     public static String EXTRA_NAME = "";
     public static String EXTRA_FULLNAME = "";
     UserRepository userRepository ;
@@ -33,9 +34,11 @@ public class InsertUser extends AppCompatActivity implements View.OnClickListene
 
         save = (Button) findViewById(R.id.btn_save);
         view = (Button) findViewById(R.id.btn_view);
+        retrofit = (Button) findViewById(R.id.btn_retrofit);
 
         save.setOnClickListener(this);
         view.setOnClickListener(this);
+        retrofit.setOnClickListener(this);
     }
 
     /**
@@ -46,7 +49,6 @@ public class InsertUser extends AppCompatActivity implements View.OnClickListene
     @Override
     public void onClick(View v) {
         Intent intent;
-        Intent replyIntent = new Intent();
         switch (v.getId()){
             case R.id.btn_save:
                 EXTRA_NAME = name.getText().toString();
@@ -69,6 +71,11 @@ public class InsertUser extends AppCompatActivity implements View.OnClickListene
                 break;
             case R.id.btn_view:
                 intent = new Intent(this,ViewUser.class);
+                startActivity(intent);
+                finish();
+                break;
+            case R.id.btn_retrofit:
+                intent = new Intent(this,RetrofitClase.class);
                 startActivity(intent);
                 finish();
                 break;
