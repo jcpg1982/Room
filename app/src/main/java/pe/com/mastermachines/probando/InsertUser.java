@@ -11,8 +11,14 @@ import android.widget.Button;
 
 import pe.com.mastermachines.probando.data.entity.UserEntity;
 import pe.com.mastermachines.probando.data.repository.UserRepository;
-import pe.com.mastermachines.probando.data.view.UserView;
-import pe.com.mastermachines.probando.retrofit.RetrofitClase;
+import pe.com.mastermachines.probando.retrofit.RetrofitClas;
+import pe.com.mastermachines.probando.retrofit.TimeFromWeb;
+import pe.com.mastermachines.probando.retrofit.apiAdapter.ApiAdapter;
+import pe.com.mastermachines.probando.retrofit.apiService.ApiService;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 
 public class InsertUser extends AppCompatActivity implements View.OnClickListener{
 
@@ -21,6 +27,8 @@ public class InsertUser extends AppCompatActivity implements View.OnClickListene
     public static String EXTRA_NAME = "";
     public static String EXTRA_FULLNAME = "";
     UserRepository userRepository ;
+    String TAG = InsertUser.class.getSimpleName();
+    Retrofit retrofi = new ApiAdapter().getAdapter();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +43,21 @@ public class InsertUser extends AppCompatActivity implements View.OnClickListene
         save = (Button) findViewById(R.id.btn_save);
         view = (Button) findViewById(R.id.btn_view);
         retrofit = (Button) findViewById(R.id.btn_retrofit);
+
+        ApiService service = retrofi.create(ApiService.class);
+        Call<TimeFromWeb> call = service.loadTime();
+
+        call.enqueue(new Callback<TimeFromWeb>() {
+            @Override
+            public void onResponse(Call<TimeFromWeb> call, Response<TimeFromWeb> response) {
+                System.out.println("Exitoso "+response.body().getCurrentDateTime());
+            }
+
+            @Override
+            public void onFailure(Call<TimeFromWeb> call, Throwable t) {
+                System.out.println("Error "+t.getCause().toString());
+            }
+        });
 
         save.setOnClickListener(this);
         view.setOnClickListener(this);
@@ -75,7 +98,7 @@ public class InsertUser extends AppCompatActivity implements View.OnClickListene
                 finish();
                 break;
             case R.id.btn_retrofit:
-                intent = new Intent(this,RetrofitClase.class);
+                intent = new Intent(this,RetrofitClas.class);
                 startActivity(intent);
                 finish();
                 break;
