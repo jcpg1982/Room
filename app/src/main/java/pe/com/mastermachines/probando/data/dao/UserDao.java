@@ -18,7 +18,7 @@ public interface UserDao {
     // es asi carajo
     @Insert
     void insert(UserEntity userEntity);
-
+    //benito mira este cambio
     @Query("DELETE FROM user")
     void deleteAll();
     //Aqui tambien
