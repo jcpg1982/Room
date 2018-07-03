@@ -15,7 +15,7 @@ import pe.com.mastermachines.probando.data.entity.UserEntity;
  */
 @Dao
 public interface UserDao {
-    // es asi carajo
+    //benito esto esta modificado
     @Insert
     void insert(UserEntity userEntity);
     //benito mira este cambio
