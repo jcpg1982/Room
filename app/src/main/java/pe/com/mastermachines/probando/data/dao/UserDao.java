@@ -22,7 +22,7 @@ public interface UserDao {
 
     @Query("DELETE FROM user")
     void deleteAll();
-
+    //Aqui tambien
     @Query("SELECT * from user")
     LiveData<List<UserEntity>> getAllUser();
 }
