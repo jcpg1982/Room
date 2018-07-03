@@ -15,7 +15,7 @@ import pe.com.mastermachines.probando.data.entity.UserEntity;
  */
 @Dao
 public interface UserDao {
-    // ---------- :) _________
+    //aqui estuvo el error
     @Insert
     void insert(UserEntity userEntity);
     //benito mira este cambio
