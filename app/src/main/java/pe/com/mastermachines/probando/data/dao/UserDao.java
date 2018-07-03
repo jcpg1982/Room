@@ -15,8 +15,7 @@ import pe.com.mastermachines.probando.data.entity.UserEntity;
  */
 @Dao
 public interface UserDao {
-
-    //probando git con benito -- Benito estuvo aqui !!
+    // es asi carajo
     @Insert
     void insert(UserEntity userEntity);
 
